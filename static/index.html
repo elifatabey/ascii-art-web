@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Ascii Art Web</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 
 <body>
@@ -13,15 +13,15 @@
     </header>
     <center>
         <form class="main-headeralt" method="POST" action="/ascii-art">
-            <div class="banners" style="font-size: 1.3em; color: white;">FONTS</div> <br>
-            <select name="bannertype" id="Banners" style="width: 120px;height: 32px;"">
-                <option value="standard">STANDARD</option>
-                <option value="shadow">SHADOW</option>
-                <option value="thinkertoy">THINKERTOY</option>
+            <div  style="font-size: 1.3em; color: white;">BANNERS</div> <br>
+            <select name="bannertype" id="Banners" style="width: 120px;height: 32px;">
+                <option value="standard">standard</option>
+                <option value="shadow">shadow</option>
+                <option value="thinkertoy">thinkertoy</option>
             </select> <br><br>
             <textarea type="text" class="textarea" name="inputtext" placeholder="Type Something
 Note: Characters lower than 32 and higher than 126 in Ascii Table are not allowed" name="StringToAscii" title="Press Enter or write \n to print newlines
-" style= "width: 552px; height: 84px;""></textarea>
+" style= "width: 552px; height: 84px;" required></textarea>
             <div>
                 <button type="submit" value="submit">Submit</button> <br><br>
             </div>

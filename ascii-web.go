@@ -15,14 +15,14 @@ type Content struct {
 
 var tpl *template.Template
 
-func init() {
-	tpl = template.Must(template.ParseGlob("static/*.html"))
-}
-
 func main() {
 	// 1. we need to create and register a request handler
 	// response writer is what the server will respond with from any request
 	//http.HandleFunc("/", display)
+	fs := http.FileServer(http.Dir("./static"))
+    http.Handle("/static/", http.StripPrefix("/static/", fs)) // handling the CSS
+
+	tpl,_ = template.ParseGlob("static/*.html")
 	http.HandleFunc("/", home)
 
 	http.HandleFunc("/ascii-art", display)
@@ -44,7 +44,6 @@ func home(writer http.ResponseWriter, request *http.Request) {
 			http.Error(writer, "Internal server error", http.StatusInternalServerError)
 		}
 		
-
 	default:
 		fmt.Fprintf(writer, "Sorry, only GET methods are supported.")
 	}
@@ -62,6 +61,19 @@ func display(w http.ResponseWriter, r *http.Request) {
 		input := r.FormValue("inputtext")
 		input = strings.Replace(input, "\r\n", "\\n", -1)
 		banner := r.FormValue("bannertype")
+		var checkbanner int
+		if banner == "standard" || banner == "thinkertoy" || banner == "shadow" {
+			checkbanner = 1
+		} else{
+			checkbanner = 0
+		}
+		if input == "" || checkbanner == 0 {
+			log.Println("input or banner error")
+			http.Error(w, "Internal server error", http.StatusInternalServerError)
+		}
+
+
+
 		page := Content{Asciiartp: asciiart(input, banner)}
 		template.Execute(w, page)
 
