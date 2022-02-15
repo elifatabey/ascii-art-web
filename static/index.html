@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ascii Art Web</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <header class="main-header" style="height: 70px;">
+        <h1 style="padding-top: 20px;">The Ascii-Art Generator</h1>
+    </header>
+    <center>
+        <form class="main-headeralt" method="POST" action="/ascii-art">
+            <div class="banners" style="font-size: 1.3em; color: white;">FONTS</div> <br>
+            <select name="bannertype" id="Banners" style="width: 120px;height: 32px;"">
+                <option value="standard">STANDARD</option>
+                <option value="shadow">SHADOW</option>
+                <option value="thinkertoy">THINKERTOY</option>
+            </select> <br><br>
+            <textarea type="text" class="textarea" name="inputtext" placeholder="Type Something
+Note: Characters lower than 32 and higher than 126 in Ascii Table are not allowed" name="StringToAscii" title="Press Enter or write \n to print newlines
+" style= "width: 552px; height: 84px;""></textarea>
+            <div>
+                <button type="submit" value="submit">Submit</button> <br><br>
+            </div>
+        </form>
+        <hr>
+        <center> <textarea style="width: 85vw; text-align: center; height: 60vh;">{{.Asciiartp}}</textarea> </center>
+    </center>
+
+    <footer>
+        <a href="https://www.01founders.co/" target="_blank"> <img
+                src="https://www.01founders.co/hubfs/raw_assets/public/01Founders_September_2021/images/Logo.svg"
+                style="width: 100px;"></a>
+    </footer>
+</body>
+
+</html>

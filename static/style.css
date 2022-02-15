@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&family=Roboto+Serif:wght@100&display=swap');
+html, body {
+    margin: 0;
+    padding: 0%;
+}
+h1 {
+    margin: 0;
+}
+.main-header, .main-headeralt {
+    background-color: rgba(37, 85, 97, 0.616);
+    /*background-color: rgba(0, 0, 0, 0);
+    background-image: url("headerback.jpeg") ;
+    background-blend-mode: multiply;  to be able to use both color and image*/
+}
+.main-header {
+   background-size: cover;
+   padding-bottom: 10px;
+   text-align: center;
+   font-size: 1.3em;
+   font-family: 'Roboto Serif', sans-serif;
+   color: rgba(255, 255, 255, 0.836);
+}
