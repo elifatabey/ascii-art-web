@@ -8,10 +8,9 @@ In this website, the user writes a text using printable characters from ASCII ta
 
 ## Usage
 
-Add video
+<img src="asciiweb.gif" width="40" height="40" />
 
 =================================================================<br><br>
-## Algorithm
 
 ## Authors
 First Name
