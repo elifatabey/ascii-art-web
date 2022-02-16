@@ -20,17 +20,17 @@ func main() {
 	// response writer is what the server will respond with from any request
 	//http.HandleFunc("/", display)
 	fs := http.FileServer(http.Dir("./static"))
-    http.Handle("/static/", http.StripPrefix("/static/", fs)) // handling the CSS
+	http.Handle("/static/", http.StripPrefix("/static/", fs)) // handling the CSS
 
-	tpl,_ = template.ParseGlob("static/*.html")
-	http.HandleFunc("/", home)
+	tpl, _ = template.ParseGlob("static/*.html")
+	http.HandleFunc("/", Home)
 
-	http.HandleFunc("/ascii-art", display)
+	http.HandleFunc("/ascii-art", Display)
 	log.Fatal(http.ListenAndServe(":5000", nil))
 	// log.fatal: it is going to print to the console and just kill the program inn case of crash
 }
 
-func home(writer http.ResponseWriter, request *http.Request) {
+func Home(writer http.ResponseWriter, request *http.Request) {
 	if request.URL.Path != "/" {
 		http.Error(writer, "404 not found.", http.StatusNotFound)
 		return
@@ -38,18 +38,17 @@ func home(writer http.ResponseWriter, request *http.Request) {
 
 	switch request.Method {
 	case "GET":
-		err := tpl.ExecuteTemplate(writer, "index.html", nil)
-		if err != nil {
-			log.Println(err)
-			http.Error(writer, "Internal server error", http.StatusInternalServerError)
-		}
-		
+		template, _ := template.ParseFiles("./static/index.html")
+
+		page := Content{Asciiartp: ""}
+		template.Execute(writer, page)
+
 	default:
 		fmt.Fprintf(writer, "Sorry, only GET methods are supported.")
 	}
 }
 
-func display(w http.ResponseWriter, r *http.Request) {
+func Display(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/ascii-art" {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
@@ -64,15 +63,22 @@ func display(w http.ResponseWriter, r *http.Request) {
 		var checkbanner int
 		if banner == "standard" || banner == "thinkertoy" || banner == "shadow" {
 			checkbanner = 1
-		} else{
+		} else {
 			checkbanner = 0
 		}
-		if input == "" || checkbanner == 0 {
-			log.Println("input or banner error")
-			http.Error(w, "Internal server error", http.StatusInternalServerError)
+		if checkbanner == 0 {
+			//log.Println("input or banner error")
+			w.WriteHeader(http.StatusInternalServerError)
+			//	http.Error(w, "Internal server error", http.StatusInternalServerError)
+			return
 		}
 
-
+		if input == "" {
+			//log.Println("input or banner error")
+			w.WriteHeader(http.StatusBadRequest)
+			//	http.Error(w, "Internal server error", http.StatusInternalServerError)
+			return
+		}
 
 		page := Content{Asciiartp: asciiart(input, banner)}
 		template.Execute(w, page)
