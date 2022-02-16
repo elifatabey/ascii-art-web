@@ -8,7 +8,7 @@ In this website, the user writes a text using printable characters from ASCII ta
 
 ## Usage
 
-<img src="asciiweb.gif" width="40" height="40" />
+<img src="asciiweb.gif" />
 
 =================================================================<br><br>
 
