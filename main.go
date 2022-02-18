@@ -26,7 +26,8 @@ func main() {
 	http.HandleFunc("/", Home)
 
 	http.HandleFunc("/ascii-art", Display)
-	log.Fatal(http.ListenAndServe(":5000", nil))
+	fmt.Printf("Starting server at port 3000\n")
+	log.Fatal(http.ListenAndServe(":3000", nil))
 	// log.fatal: it is going to print to the console and just kill the program inn case of crash
 }
 

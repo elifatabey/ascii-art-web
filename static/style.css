@@ -20,3 +20,28 @@ h1 {
    font-family: 'Roboto Serif', sans-serif;
    color: rgba(255, 255, 255, 0.836);
 }
+
+.Submit-button {
+    background-color: #e7e7e7;
+    color: black;
+    border-radius: 10px;
+    transition-duration: 0.4s;
+}
+
+.Submit-button:hover {
+    background-color: #c5c3c3;
+    cursor: pointer;
+}
+
+.Banner-dropdown {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.textarea {
+    border-radius: 10px;
+}
+
+.Test {
+    background-image: url('wallpaper.webp');
+}

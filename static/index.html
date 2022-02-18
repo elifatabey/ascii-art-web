@@ -19,7 +19,7 @@
     <center>
         <form class="main-headeralt" method="POST" action="/ascii-art">
             <div  style="font-size: 1.3em; color: white;">BANNERS</div> <br>
-            <select name="bannertype" id="Banners" style="width: 120px;height: 32px;">
+            <select name="bannertype" id="Banners" style="width: 120px;height: 32px;" class="Banner-dropdown">
                 <option value="standard">standard</option>
                 <option value="shadow">shadow</option>
                 <option value="thinkertoy">thinkertoy</option>
@@ -28,19 +28,21 @@
 Note: Characters lower than 32 and higher than 126 in Ascii Table are not allowed" name="StringToAscii" title="Press Enter or write \n to print newlines
 " style= "width: 552px; height: 84px;" required></textarea>
             <div>
-                <button type="submit" value="submit">Submit</button> <br><br>
+                <button class="Submit-button" type="submit" value="submit">Submit</button> <br><br>
             </div>
         </form>
         <hr>
-        <center> <textarea style="width: 85vw; text-align: center; height: 60vh;">{{.Asciiartp}}</textarea> </center>
+        <div class="Test">
+        <center> <textarea style="width: 85vw; text-align: center; height: 50vh; border-radius: 10px;">{{.Asciiartp}}</textarea> </center>
     </center>
 
     <footer>
         <a href="https://www.01founders.co/" target="_blank"> <img
                 src="https://www.01founders.co/hubfs/raw_assets/public/01Founders_September_2021/images/Logo.svg"
-                style="width: 100px;"
+                style="width: 100px; background-color: transparent;"
                 width="8vw" height="23vh"/></a>
     </footer>
+</div>
 </body>
 
 </html>
